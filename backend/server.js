@@ -39,10 +39,10 @@ const PORT = process.env.PORT || 3000;
 // allow frontend API calls
 app.use(
   cors({
-    // frontend url
-    origin: "http://localhost:5173",
-
-    // allow cookies
+    origin: [
+      "http://localhost:5173",
+      process.env.FRONTEND_URL,
+    ],
     credentials: true,
   })
 );
