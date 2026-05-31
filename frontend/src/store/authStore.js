@@ -1,11 +1,11 @@
 // import create function from zustand to create global store
 import { create } from "zustand";
-
+import BASE_URL from "../config/baseAPI";
 // import axios to call backend APIs
 import axios from "axios";
 
 // backend base url for user APIs
-const API_URL = "http://localhost:3000/user-api";
+const API_URL = `${BASE_URL}/user-api`;
 
 // create auth store
 export const useAuth = create((set) => ({

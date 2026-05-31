@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import axios from "axios";
+import BASE_URL from "../config/baseAPI";
 
-const STOCK_API_URL = "http://localhost:3000/stock-api";
+const STOCK_API_URL = `${BASE_URL}/stock-api`;
 
 const cleanError = (err) => {
   if (err.code === "ERR_NETWORK") {

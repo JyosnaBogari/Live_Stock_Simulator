@@ -1,11 +1,11 @@
 // import create function from zustand
 import { create } from "zustand";
-
+import BASE_URL from "../config/baseAPI";
 // import axios for backend api calls
 import axios from "axios";
 
 // backend stock api base url
-const STOCK_API_URL = "http://localhost:3000/stock-api";
+const STOCK_API_URL = `${BASE_URL}/stock-api`;
 
 // create stock store
 export const useStock = create((set, get) => ({

@@ -23,6 +23,8 @@ import {
   secondaryBtn,
 } from "../styles/common.js";
 
+import BASE_URL from "../config/baseAPI";
+
 function ProfileSettings() {
   const [searchParams] = useSearchParams();
 
@@ -100,7 +102,7 @@ function ProfileSettings() {
       setReportsLoading(true);
 
       const response = await axios.get(
-        "http://localhost:3000/admin-api/my-reports",
+        `${BASE_URL}/admin-api/my-reports`,
         { withCredentials: true }
       );
 
@@ -201,7 +203,7 @@ function ProfileSettings() {
       setSupportLoading(true);
 
       await axios.post(
-        "http://localhost:3000/admin-api/reports",
+        `${BASE_URL}/admin-api/reports`,
         {
           type: supportType,
           subject: supportSubject,

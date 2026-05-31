@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
-
-const ADMIN_API_URL = "http://localhost:3000/admin-api";
+import BASE_URL from "../config/baseAPI";
+const ADMIN_API_URL = `{BASE_URL}/admin-api`;
 
 export const useAdmin = create((set) => ({
   users: [],

@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { io } from "socket.io-client";
+import BASE_URL from "../config/baseAPI";
 
-const SOCKET_URL = "http://localhost:3000";
+const SOCKET_URL = `${BASE_URL}`;
 
 export const useSocket = create((set, get) => ({
   socket: null,
