@@ -1,42 +1,98 @@
-### Project Architecture
+# StockSim Frontend
 
-Stock Market Simulator
-│
-├── Frontend - React
-│   ├── Home Page public
-│   ├── Signup/Login
-│   ├── Dashboard private
-│   ├── Buy/Sell Stocks
-│   ├── Portfolio
-│   ├── Leaderboard
-│   ├── Alerts
-│   └── AI Stock Assistant
-│
-├── Backend - Node.js + Express
-│   ├── Auth APIs
-│   ├── Stock APIs
-│   ├── Buy/Sell APIs
-│   ├── Portfolio APIs
-│   ├── Leaderboard APIs
-│   └── Socket.io live price updates
-│
-├── Database - MongoDB
-│   ├── Users
-│   ├── Wallets
-│   ├── Portfolio
-│   ├── Transactions
-│   └── Alerts
-│
-├── Chart.js / Recharts
-│   └── Shows stock price graph
-│
-├── Socket.io
-│   └── Updates stock prices live without refreshing
-│
-├── Generative AI
-│   └── Explains stock/company/news in simple language
-│
-└── Cloud
-    ├── Frontend: Vercel / Netlify
-    ├── Backend: Render
-    └── Database: MongoDB Atlas
+Frontend for the Live Stock Market Simulator project. This React application allows users to explore live simulator prices, buy and sell stocks with virtual money, manage portfolio, watchlist, alerts, AI assistant, news, and profile settings.
+
+## Live Demo
+
+https://live-stock-simulator-omega.vercel.app
+
+## Tech Stack
+
+- React
+- Vite
+- Tailwind CSS
+- React Router
+- Zustand
+- Axios
+- Socket.io Client
+- Recharts
+- React Hot Toast
+- Lucide React
+
+## Features
+
+- Responsive landing page
+- User login and signup
+- Role-based navigation
+- Protected user routes
+- Admin-only routes
+- Market page
+- Stock details page
+- Portfolio page
+- Watchlist
+- Price alerts
+- AI assistant
+- News page
+- Profile and settings
+- Support ticket tracking
+- Dark and light mode
+- User-friendly error messages
+
+## Project Structure
+
+```txt
+frontend
+├── public
+├── src
+│   ├── components
+│   ├── config
+│   ├── data
+│   ├── store
+│   ├── styles
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+├── package.json
+├── vite.config.js
+└── vercel.json
+
+Environment Variables
+Create .env inside the frontend folder.
+VITE_API_URL=http://localhost:3000
+
+For production:
+VITE_API_URL=https://live-stock-simulator.onrender.com
+
+Installation
+cd frontend
+npm install
+npm run dev
+
+Frontend runs on:
+http://localhost:5173
+
+Build
+npm run build
+
+Deployment
+
+The frontend is deployed on Vercel.
+
+Vercel settings:
+Root Directory: frontend
+Build Command: npm run build
+Output Directory: dist
+Install Command:npm install
+
+vercel.json is used to support React Router direct routes:
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+
+Author
+Jyosna Bogari
