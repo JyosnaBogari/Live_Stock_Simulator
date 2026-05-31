@@ -157,10 +157,18 @@ adminRoute.get("/analytics", verifyToken, verifyAdmin, async (req, res, next) =>
     next(err);
   }
 });
-
 adminRoute.post("/reports", verifyToken, async (req, res, next) => {
   try {
     const { type, subject, message } = req.body;
+
+    const userId = req.user?._id;
+
+    if (!userId) {
+      return res.status(401).json({
+        message: "error occurred",
+        error: "Session expired. Please login again.",
+      });
+    }
 
     if (!type || !subject || !message) {
       return res.status(400).json({
@@ -170,7 +178,7 @@ adminRoute.post("/reports", verifyToken, async (req, res, next) => {
     }
 
     const report = await ReportModel.create({
-      userId: req.userObj._id,
+      userId,
       type,
       subject,
       message,
@@ -231,18 +239,17 @@ adminRoute.put(
 
 adminRoute.get("/my-reports", verifyToken, async (req, res, next) => {
   try {
-    const userId = req.userObj?._id || req.user?._id || req.userId || req.id;
+    const userId = req.user?._id;
 
     if (!userId) {
       return res.status(401).json({
         message: "error occurred",
-        error: "Please login again",
+        error: "Session expired. Please login again.",
       });
     }
 
-    const reports = await ReportModel.find({
-      userId,
-    }).sort({ createdAt: -1 });
+    const reports = await ReportModel.find({ userId })
+      .sort({ createdAt: -1 });
 
     res.status(200).json({
       message: "user reports fetched",
