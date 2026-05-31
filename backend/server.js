@@ -22,12 +22,28 @@ const app = exp();
 const server = http.createServer(app);
 
 // create socket io server
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://live-stock-simulator-omega.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
 const io = new Server(server, {
-  // allow frontend socket connection
   cors: {
-    // frontend url
-    origin: "http://localhost:5173",
-    // allow cookies
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
     credentials: true,
   },
 });
@@ -36,16 +52,7 @@ const io = new Server(server, {
 // get port from .env
 const PORT = process.env.PORT || 3000;
 
-// allow frontend API calls
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      process.env.FRONTEND_URL,
-    ],
-    credentials: true,
-  })
-);
+
 
 // limit too many api requests
 const apiLimiter = rateLimit({
