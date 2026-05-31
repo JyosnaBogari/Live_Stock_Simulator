@@ -74,7 +74,12 @@ userRoute.get("/me", verifyToken, async (req, res) => {
 
 // logout api
 userRoute.post("/logout", async (req, res) => {
-  res.cookie("token", token, cookieOptions);
+  res.clearCookie("token", {
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
+
   res.status(200).json({
     message: "logout successful",
   });
