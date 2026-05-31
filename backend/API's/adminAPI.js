@@ -1,10 +1,10 @@
 import exp from "express";
-import { UserTypeModel } from "../Models/UserTypeModel.js";
-import { PortfolioModel } from "../Models/PortfolioModel.js";
-import { TransactionModel } from "../Models/TransactionModel.js";
-import { ReportModel } from "../Models/ReportModel.js";
-import { verifyToken } from "../Middleware/verifyToken.js";
-import { verifyAdmin } from "../Middleware/verifyAdmin.js";
+import { UserTypeModel } from "../models/UserTypeModel.js";
+import { PortfolioModel } from "../models/PortfolioModel.js";
+import { TransactionModel } from "../models/TransactionModel.js";
+import { ReportModel } from "../models/ReportModel.js";
+import { verifyToken } from "../middleware/verifyToken.js";
+import { verifyAdmin } from "../middleware/verifyAdmin.js";
 import axios from "axios";
 
 export const adminRoute = exp.Router();

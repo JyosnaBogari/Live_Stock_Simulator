@@ -1,6 +1,6 @@
 import exp from "express";
-import { ReportModel } from "../Models/ReportModel.js";
-import { verifyToken } from "../Middleware/verifyToken.js";
+import { ReportModel } from "../models/ReportModel.js";
+import { verifyToken } from "../middleware/verifyToken.js";
 
 export const reportRoute = exp.Router();
 
