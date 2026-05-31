@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import axios from "axios";
 import BASE_URL from "../config/baseAPI";
-const ADMIN_API_URL = `{BASE_URL}/admin-api`;
+
+const ADMIN_API_URL = `${BASE_URL}/admin-api`;
 
 export const useAdmin = create((set) => ({
   users: [],
@@ -14,11 +15,17 @@ export const useAdmin = create((set) => ({
 
   fetchStats: async () => {
     try {
-      set({ loading: true });
+      set({ loading: true, error: null });
+
       const res = await axios.get(`${ADMIN_API_URL}/stats`, {
         withCredentials: true,
       });
-      set({ stats: res.data.payload, loading: false });
+
+      set({
+        stats: res.data.payload || null,
+        loading: false,
+      });
+
       return { success: true };
     } catch (err) {
       const msg = err.response?.data?.error || "Failed to fetch stats";
@@ -29,15 +36,21 @@ export const useAdmin = create((set) => ({
 
   fetchUsers: async () => {
     try {
-      set({ loading: true });
+      set({ loading: true, error: null });
+
       const res = await axios.get(`${ADMIN_API_URL}/users`, {
         withCredentials: true,
       });
-      set({ users: res.data.payload, loading: false });
+
+      set({
+        users: Array.isArray(res.data.payload) ? res.data.payload : [],
+        loading: false,
+      });
+
       return { success: true };
     } catch (err) {
       const msg = err.response?.data?.error || "Failed to fetch users";
-      set({ error: msg, loading: false });
+      set({ users: [], error: msg, loading: false });
       return { success: false, message: msg };
     }
   },
@@ -51,9 +64,11 @@ export const useAdmin = create((set) => ({
       );
 
       set((state) => ({
-        users: state.users.map((user) =>
-          user._id === userId ? res.data.payload : user
-        ),
+        users: Array.isArray(state.users)
+          ? state.users.map((user) =>
+              user._id === userId ? res.data.payload : user
+            )
+          : [],
       }));
 
       return { success: true };
@@ -67,30 +82,42 @@ export const useAdmin = create((set) => ({
 
   fetchAnalytics: async () => {
     try {
-      set({ loading: true });
+      set({ loading: true, error: null });
+
       const res = await axios.get(`${ADMIN_API_URL}/analytics`, {
         withCredentials: true,
       });
-      set({ analytics: res.data.payload, loading: false });
+
+      set({
+        analytics: res.data.payload || null,
+        loading: false,
+      });
+
       return { success: true };
     } catch (err) {
       const msg = err.response?.data?.error || "Failed to fetch analytics";
-      set({ error: msg, loading: false });
+      set({ analytics: null, error: msg, loading: false });
       return { success: false, message: msg };
     }
   },
 
   fetchReports: async () => {
     try {
-      set({ loading: true });
+      set({ loading: true, error: null });
+
       const res = await axios.get(`${ADMIN_API_URL}/reports`, {
         withCredentials: true,
       });
-      set({ reports: res.data.payload, loading: false });
+
+      set({
+        reports: Array.isArray(res.data.payload) ? res.data.payload : [],
+        loading: false,
+      });
+
       return { success: true };
     } catch (err) {
       const msg = err.response?.data?.error || "Failed to fetch reports";
-      set({ error: msg, loading: false });
+      set({ reports: [], error: msg, loading: false });
       return { success: false, message: msg };
     }
   },
@@ -104,9 +131,11 @@ export const useAdmin = create((set) => ({
       );
 
       set((state) => ({
-        reports: state.reports.map((report) =>
-          report._id === reportId ? res.data.payload : report
-        ),
+        reports: Array.isArray(state.reports)
+          ? state.reports.map((report) =>
+              report._id === reportId ? res.data.payload : report
+            )
+          : [],
       }));
 
       return { success: true };
@@ -117,17 +146,24 @@ export const useAdmin = create((set) => ({
       };
     }
   },
+
   fetchMonitor: async () => {
     try {
-      set({ loading: true });
+      set({ loading: true, error: null });
+
       const res = await axios.get(`${ADMIN_API_URL}/monitor`, {
         withCredentials: true,
       });
-      set({ monitor: res.data.payload, loading: false });
+
+      set({
+        monitor: res.data.payload || null,
+        loading: false,
+      });
+
       return { success: true };
     } catch (err) {
       const msg = err.response?.data?.error || "Failed to fetch monitor data";
-      set({ error: msg, loading: false });
+      set({ monitor: null, error: msg, loading: false });
       return { success: false, message: msg };
     }
   },

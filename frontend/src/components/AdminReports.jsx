@@ -20,8 +20,12 @@ const [adminReply, setAdminReply] = useState("");
     fetchReports();
   }, [fetchReports]);
 
-  const bugReports = reports.filter((report) => report.type === "BUG");
-  const feedbackReports = reports.filter((report) => report.type === "FEEDBACK");
+ const safeReports = Array.isArray(reports) ? reports : [];
+
+const bugReports = safeReports.filter((report) => report.type === "BUG");
+const feedbackReports = safeReports.filter(
+  (report) => report.type === "FEEDBACK"
+);
 
   const openResolveModal = (report) => {
   setSelectedReport(report);

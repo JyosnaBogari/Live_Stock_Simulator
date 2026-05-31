@@ -13,7 +13,9 @@ import {
 } from "../styles/common.js";
 
 function AdminUsers() {
-  const users = useAdmin((state) => state.users);
+ const users = useAdmin((state) =>
+  Array.isArray(state.users) ? state.users : []
+); 
   const fetchUsers = useAdmin((state) => state.fetchUsers);
   const updateUserStatus = useAdmin((state) => state.updateUserStatus);
 
