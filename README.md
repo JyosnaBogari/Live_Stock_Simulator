@@ -1,10 +1,10 @@
-# 📈 StockSim - Live Stock Market Simulator
+#  StockSim - Live Stock Market Simulator
 
 A full-stack virtual stock trading platform that allows users to practice investing using virtual money, track portfolios, monitor stock performance, receive alerts, and learn stock market concepts without risking real money.
 
 ---
 
-# 🌐 Live Links
+#  Live Links
 
 ### Frontend
 https://live-stock-simulator-omega.vercel.app
@@ -14,9 +14,9 @@ https://live-stock-simulator.onrender.com
 
 ---
 
-# ✨ Features
+# Features
 
-## 👤 User Features
+## User Features
 
 - User Registration & Login
 - JWT Authentication
@@ -38,7 +38,7 @@ https://live-stock-simulator.onrender.com
 
 ---
 
-## 🛠️ Admin Features
+## Admin Features
 
 - Admin Dashboard
 - User Management
@@ -51,7 +51,7 @@ https://live-stock-simulator.onrender.com
 
 ---
 
-## ⚡ Real-Time Features
+## Real-Time Features
 
 - Live Stock Price Updates
 - Socket.io Integration
@@ -61,7 +61,7 @@ https://live-stock-simulator.onrender.com
 
 ---
 
-# 🚀 Tech Stack
+# Tech Stack
 
 ## Frontend
 
@@ -92,7 +92,7 @@ https://live-stock-simulator.onrender.com
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```txt
 Live_Stock_Simulator
@@ -145,7 +145,7 @@ Live_Stock_Simulator
 
 ---
 
-# ⚙️ Environment Variables
+#  Environment Variables
 
 ## Backend (.env)
 
@@ -195,7 +195,7 @@ VITE_API_URL=https://live-stock-simulator.onrender.com
 
 ---
 
-# 🛠️ Installation
+#  Installation
 
 ## Clone Repository
 
@@ -243,7 +243,7 @@ http://localhost:5173
 
 ---
 
-# 🔐 Authentication
+# Authentication
 
 Authentication uses:
 
@@ -268,7 +268,7 @@ const cookieOptions = {
 
 ---
 
-# 📡 API Routes
+#  API Routes
 
 ## User APIs
 
@@ -332,7 +332,7 @@ GET    /admin-api/monitor
 
 ---
 
-# 🚀 Deployment
+# Deployment
 
 ## Frontend (Vercel)
 
@@ -385,7 +385,7 @@ Configure all environment variables inside Render Dashboard.
 
 ---
 
-# 🛡️ Security Features
+# Security Features
 
 - JWT Authentication
 - HTTP Only Cookies
@@ -400,7 +400,7 @@ Configure all environment variables inside Render Dashboard.
 
 ---
 
-# ❌ Error Handling
+#  Error Handling
 
 The application handles:
 
@@ -416,7 +416,7 @@ The application handles:
 
 ---
 
-# 🔮 Future Enhancements
+#  Future Enhancements
 
 - Real Market Data Integration
 - Advanced Portfolio Analytics
@@ -429,7 +429,7 @@ The application handles:
 
 ---
 
-# 👩‍💻 Author
+#  Author
 
 **Jyosna Bogari**
 
@@ -438,6 +438,6 @@ Anurag University
 
 ---
 
-# 🎯 Project Objective
+#  Project Objective
 
 StockSim helps students and beginners understand stock market trading concepts by providing a realistic trading simulator using virtual money. Users can learn investing, test strategies, track performance, and gain practical experience without financial risk.
